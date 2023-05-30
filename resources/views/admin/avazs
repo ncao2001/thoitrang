@@ -1,0 +1,111 @@
+@extends('admin.layout.master')
+@section('title', 'Statistics')
+@section('body')
+<!-- Main content -->
+<?php 
+$connect = new mysqli('localhost','root','','datn');
+$query = "SELECT product_categories.*,COUNT(products.id) as number_cate FROM products INNER JOIN product_categories on products.product_category_id=product_categories.id GROUP BY products.product_category_id";
+$result = mysqli_query($connect,$query);
+$data = [];
+while($row = mysqli_fetch_array($result)){
+    $data[]=$row;
+}
+// var_dump($data);
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['name', 'number_cate'],
+          <?php
+            foreach($data as $key){
+                echo "['".$key['name']."',".$key['number_cate']."],";
+            }
+          ?>
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <div class="app-main__inner">
+        <div class="row">
+            <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div>
+    </div>
+
+<!-- /.content -->
+@endsection
+
+
+
+
+
+
+@extends('admin.layout.master')
+@section('title', 'Statistics')
+@section('body')
+<!-- Main content -->
+<?php 
+$connect = new mysqli('localhost','root','','datn');
+$query = "SELECT COUNT(order_id) AS num_order, SUM(num_product) AS num_pro, SUM(num_total) as num_tt
+FROM (SELECT order_details.order_id, SUM(qty) AS num_product, SUM(total) as num_total
+from order_details
+join orders on order_details.order_id = orders.id 
+Where Month(orders.created_at) = 4
+GROUP BY order_details.order_id) AS tbl";
+$result = mysqli_query($connect,$query);
+$data = [];
+while($row = mysqli_fetch_array($result)){
+    $data[]=$row;
+}
+// var_dump($data);
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Tổng đơn hàng', 'Tổng sản phẩm bán ra', 'Tổng thu nhập'],
+          <?php
+            foreach($data as $key){
+                echo "['Tháng 1',".$key['num_order'].",".$key['num_pro'].",".$key['num_tt']."],";
+            }
+          ?>
+          ['Tháng 2', 5, 10, 60],
+          ['Tháng 3', 6, 9, 55],
+          ['Tháng 4', 8, 15, 67],
+          ['Tháng 5', 5, 7, 52]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Thống kê',
+            subtitle: 'Tổng đơn hàng, Tổng sản phẩm bán ra, Tổng thu nhập: 2023',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <div class="app-main__inner">
+        <div class="row">
+        <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+        </div>
+    </div>
+<!-- /.content -->
+@endsection
+
