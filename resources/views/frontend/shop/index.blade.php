@@ -37,10 +37,10 @@
                                             <option {{request('sort_by')=='price-ascending'?'selected':''}} value="price-ascending">Sorting: Price Ascending</option>
                                             <option {{request('sort_by')=='price-descending'?'selected':''}} value="price-descending">Sorting: Price Descending</option>
                                         </select>
-                                        <select name="show" onchange="this.form.submit();" class="p-show">
-                                            <option {{request('show')=='6'?'selected':''}} value="6">Show: 6</option>
+                                        <select name="show" onchange="this.form.submit();" class="sorting">
                                             <option {{request('show')=='9'?'selected':''}} value="9">Show: 9</option>
                                             <option {{request('show')=='12'?'selected':''}} value="12">Show: 12</option>
+                                            <option {{request('show')=='15'?'selected':''}} value="15">Show: 15</option>
                                         </select>
                                     </div>
                                 </form>

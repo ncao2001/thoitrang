@@ -8,10 +8,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>Bag,kids</span>
+                            <span>Clothings</span>
                             <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
+                            <p>Welcome the two biggest promotional events of the year, hunt now.</p>
                             <a href="./shop" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -26,8 +25,7 @@
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
+                            <p>Welcome the two biggest promotional events of the year, hunt now.</p>
                             <a href="./shop" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -110,8 +108,7 @@
             <div class="col-lg-6 text-center">
                 <div class="section-title">
                     <h2>Deal Of The Week</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br /> do ipsum dolor sit amet,
-                        consectetur adipisicing elit </p>
+                    <p>Welcome the two biggest promotional events of the year, hunt now.</p>
                     <div class="product-price">
                         $35.00
                         <span>/ HanBag</span>
